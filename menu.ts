@@ -1,8 +1,13 @@
 import ler = require("readline-sync");
 import { colors } from "./src/util/Colors";
+import { Planta } from "./src/model/Planta";
 
-export function main(){
-let opcao: number;
+//TESTES
+const p1 = new Planta(1, "Girassol", 30, 3);
+const p2 = new Planta(2, "Orquidea", 35, 4);
+
+export function main() {
+    let opcao: number;
 
     while (true) {
         console.log(colors.fg.greenstrong + "-------------------------------------------------------------------------------");
@@ -24,33 +29,39 @@ let opcao: number;
         console.log(colors.fg.greenstrong + "Opção escolhida: " + colors.reset);
         opcao = ler.questionInt("");
 
-        switch(opcao){
+        switch (opcao) {
             case 1:
-                console.log(colors.fg.greenstrong +"\n------- Cadastramento de produtos -------\n"+ colors.reset);
+                console.log(colors.fg.greenstrong + "\n------- Cadastramento de produtos -------\n" + colors.reset);
 
-                const nome = ler.question(colors.fg.greenstrong +"Digite o nome do produto: " + colors.reset);
-                const preco = ler.questionInt(colors.fg.greenstrong +"Informe o preco do produto (R$): " + colors.reset);
+                const nome = ler.question(colors.fg.greenstrong + "Digite o nome do produto: " + colors.reset);
+                const preco = ler.questionInt(colors.fg.greenstrong + "Informe o preco do produto (R$): " + colors.reset);
                 console.log(`Produto cadastrado: ${nome} - R$${preco.toFixed(2)}`);
-            break;
+                break;
 
-            case 2: 
-                console.log(colors.fg.greenstrong +"\n------- Produtos cadastrados -------\n"+ colors.reset);
-            break;
-            
+            case 2:
+                console.log(colors.fg.greenstrong + "\n------- Produtos cadastrados -------\n" + colors.reset);
+                console.log("------------------------------");
+                p1.listar();
+                console.log("------------------------------");
+                console.log("------------------------------");
+                p2.listar();
+                console.log("------------------------------");
+                break;
+
             case 3:
-                console.log(colors.fg.greenstrong +"\n------- Atualizar produto -------\n"+ colors.reset);
-            break;
+                console.log(colors.fg.greenstrong + "\n------- Atualizar produto -------\n" + colors.reset);
+                break;
 
             case 4:
-                console.log(colors.fg.greenstrong +"\n------- Deletar um produto -------\n"+ colors.reset);
-            break;
+                console.log(colors.fg.greenstrong + "\n------- Deletar um produto -------\n" + colors.reset);
+                break;
 
             case 5:
-                console.log(colors.fg.greenstrong +"Saindo..."+ colors.reset);
-            return;
+                console.log(colors.fg.greenstrong + "Saindo..." + colors.reset);
+                return;
 
             default:
-            console.log("Opção inválida, tente novamente.");
+                console.log("Opção inválida, tente novamente.");
         }
     }
 }
